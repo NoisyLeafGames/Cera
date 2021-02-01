@@ -1,6 +1,6 @@
 extends Node2D
 
-var target = Vector2(0,0)
+var target = Vector2(500,1100)
 var speed = 5
 
 func _ready():
@@ -21,6 +21,6 @@ func _process(delta):
 		get_node("AnimationPlayer").play("stand")
 	
 	if velocity.x < 0:
-		set_scale(Vector2(-1,1))
+		set_scale(Vector2(-0.3,0.3))
 	else:
-		set_scale(Vector2(1,1))
+		set_scale(Vector2(0.3,0.3))

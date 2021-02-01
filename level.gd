@@ -1,16 +1,23 @@
 extends Node2D
 
+const food = preload("res://food.tscn")
+var foodsNode = null
+var foodAreaSize
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var lastFoodAdded = 
 
+const halfFoodSize = Vector2(128,128)
+const maxFoodCount = 3
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
+	foodsNode = get_node("Foods")
+	foodAreaSize = get_node("grass/grass").get_rect().size - halfFoodSize
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if foodsNode.get_child_count() <= maxFoodCount:
+		var foodToAdd = food.instance()
+		
+		foodToAdd.position = Vector2(randf(),randf()) * foodAreaSize
+		
+		foodsNode.add_child(foodToAdd)

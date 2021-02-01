@@ -139,7 +139,7 @@ tracks/10/path = NodePath("Skeleton2D:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -264,7 +264,7 @@ tracks/0/path = NodePath("Skeleton2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -501,10 +501,10 @@ tracks/19/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -200, 0 )
 script = ExtResource( 8 )
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+position = Vector2( -200, 0 )
 scale = Vector2( 49.8066, 50 )
 
 [node name="Body" type="Bone2D" parent="Skeleton2D"]
@@ -512,7 +512,6 @@ position = Vector2( 0, -0.222977 )
 rest = Transform2D( 1, 0, 0, 1, 0, -0.222977 )
 
 [node name="Hind" type="Bone2D" parent="Skeleton2D/Body"]
-position = Vector2( 0, -0.0776727 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Front Leg" type="Bone2D" parent="Skeleton2D/Body/Hind"]
@@ -529,12 +528,12 @@ rest = Transform2D( 0.0157383, 0.182695, 6.70218, -0.577361, 2.60571, 2.67843 )
 
 [node name="Tail" type="Bone2D" parent="Skeleton2D/Body/Hind"]
 position = Vector2( -0.778207, -0.187009 )
-rotation = -2.70443
+rotation = -2.63876
 scale = Vector2( 0.0871361, 0.238917 )
 rest = Transform2D( -0.0763504, -0.0419919, 0.115137, -0.209344, -0.778207, -0.187009 )
 
 [node name="Front" type="Bone2D" parent="Skeleton2D/Body"]
-position = Vector2( 4.99657, 0 )
+position = Vector2( 4.97925, 0 )
 rest = Transform2D( 1, 0, 0, 1, 5, 0 )
 
 [node name="Front Leg" type="Bone2D" parent="Skeleton2D/Body/Front"]
@@ -545,7 +544,7 @@ rest = Transform2D( 0.0487788, 0.170331, -1.69184, 0.484503, 0.546575, 2.90594 )
 
 [node name="Back Leg" type="Bone2D" parent="Skeleton2D/Body/Front"]
 position = Vector2( 2.43937, 2.3747 )
-rotation = 0.962949
+rotation = 0.97821
 scale = Vector2( 0.192729, -6.96415 )
 rest = Transform2D( 0.107641, 0.159868, 5.77675, -3.88954, 2.43937, 2.3747 )
 
@@ -556,9 +555,7 @@ scale = Vector2( 0.0871362, 0.238917 )
 rest = Transform2D( 0.0422113, -0.0762294, 0.209012, 0.115738, 1.8024, 1.00702 )
 
 [node name="Node2D" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -200, 0 )
 
 [node name="Hind Back Leg" type="Polygon2D" parent="Node2D"]
 position = Vector2( -103.151, -348.276 )
@@ -631,9 +628,9 @@ __meta__ = {
 position = Vector2( -110.098, -349.476 )
 texture = ExtResource( 4 )
 skeleton = NodePath("../../Skeleton2D")
-polygon = PoolVector2Array( -43.2836, 287.313, 102.985, 396.269, 114.981, 343.487, 132.836, 264.925 )
-uv = PoolVector2Array( -43.2836, 287.313, 102.985, 396.269, 114.981, 343.487, 132.836, 264.925 )
-bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Head"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Front Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Back Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Front Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Back Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Tail"), PoolRealArray( 1, 1, 1, 1 ) ]
+polygon = PoolVector2Array( 0, 304.48, 0, 297.984, 1.5748, 294.342, 2.26378, 289.027, 11.122, 277.216, 127.526, 299.009, 94.0767, 377.406, 1.74216, 324.096, 4.87805, 312.598 )
+uv = PoolVector2Array( 0, 304.48, 0, 297.984, 1.5748, 294.342, 2.26378, 289.027, 11.122, 277.216, 127.526, 299.009, 94.0767, 377.406, 1.74216, 324.096, 4.87805, 312.598 )
+bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hind"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hind/Front Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hind/Back Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hind/Tail"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Front"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Front/Front Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Front/Back Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Front/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 __meta__ = {
 "_edit_lock_": true
 }
