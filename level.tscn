@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/RPG Tiles Vector/PNG/rpgTile024.png" type="Texture" id=1]
 [ext_resource path="res://Cera.tscn" type="PackedScene" id=2]
@@ -26,6 +26,30 @@
 [ext_resource path="res://assets/forestisometricblocktileset_windows/256x128/PNG/Object_13.png" type="Texture" id=24]
 [ext_resource path="res://assets/bed.png" type="Texture" id=25]
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 215.431, 243.034 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 35.6863, 34.8975 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.607843, 0.00784314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.341176, 0.00392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.65098, 0.65098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.411765, 0.411765, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.517647, 0, 0.905882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.345098, 0, 0.501961, 1 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -42,7 +66,7 @@ __meta__ = {
 position = Vector2( 0, -1748 )
 
 [node name="grass" type="TextureRect" parent="grass"]
-margin_top = 1736.0
+margin_top = 1748.0
 margin_right = 1085.0
 margin_bottom = 2821.0
 texture = ExtResource( 19 )
@@ -77,7 +101,7 @@ __meta__ = {
 
 [node name="TextureRect3" type="TextureRect" parent="pond grass"]
 margin_left = 595.0
-margin_top = 1863.0
+margin_top = 1862.0
 margin_right = 659.0
 margin_bottom = 2311.0
 texture = ExtResource( 20 )
@@ -88,9 +112,9 @@ __meta__ = {
 
 [node name="TextureRect4" type="TextureRect" parent="pond grass"]
 margin_left = 659.0
-margin_top = 1798.0
+margin_top = 1799.0
 margin_right = 1041.0
-margin_bottom = 1862.0
+margin_bottom = 1863.0
 texture = ExtResource( 15 )
 stretch_mode = 2
 __meta__ = {
@@ -111,9 +135,9 @@ __meta__ = {
 
 [node name="TextureRect16" type="TextureRect" parent="pond grass"]
 margin_left = 1041.0
-margin_top = 1798.0
+margin_top = 1799.0
 margin_right = 1105.0
-margin_bottom = 1862.0
+margin_bottom = 1863.0
 rect_pivot_offset = Vector2( 365.26, 30.8687 )
 texture = ExtResource( 16 )
 stretch_mode = 3
@@ -123,9 +147,9 @@ __meta__ = {
 
 [node name="TextureRect17" type="TextureRect" parent="pond grass"]
 margin_left = 595.0
-margin_top = 1798.0
+margin_top = 1799.0
 margin_right = 659.0
-margin_bottom = 1862.0
+margin_bottom = 1863.0
 rect_pivot_offset = Vector2( 365.26, 30.8687 )
 texture = ExtResource( 17 )
 stretch_mode = 3
@@ -137,9 +161,9 @@ __meta__ = {
 position = Vector2( 659, 1850.68 )
 
 [node name="TextureRect17" type="TextureRect" parent="pond"]
-margin_top = 384.0
+margin_top = 383.0
 margin_right = 64.0
-margin_bottom = 448.0
+margin_bottom = 447.0
 rect_pivot_offset = Vector2( 365.26, 30.8687 )
 texture = ExtResource( 5 )
 stretch_mode = 3
@@ -160,9 +184,9 @@ __meta__ = {
 }
 
 [node name="TextureRect9" type="TextureRect" parent="pond"]
-margin_left = 320.047
+margin_left = 319.047
 margin_top = 64.0
-margin_right = 382.047
+margin_right = 381.047
 margin_bottom = 383.0
 texture = ExtResource( 8 )
 expand = true
@@ -216,9 +240,9 @@ __meta__ = {
 
 [node name="TextureRect14" type="TextureRect" parent="pond"]
 margin_left = 64.0466
-margin_top = 384.0
+margin_top = 383.0
 margin_right = 353.047
-margin_bottom = 448.0
+margin_bottom = 447.0
 rect_pivot_offset = Vector2( 301.214, 30.8687 )
 texture = ExtResource( 9 )
 stretch_mode = 2
@@ -227,10 +251,10 @@ __meta__ = {
 }
 
 [node name="TextureRect16" type="TextureRect" parent="pond"]
-margin_left = 320.047
-margin_top = 384.0
-margin_right = 384.047
-margin_bottom = 448.0
+margin_left = 319.047
+margin_top = 383.0
+margin_right = 383.047
+margin_bottom = 447.0
 rect_pivot_offset = Vector2( 45.2136, 30.8687 )
 texture = ExtResource( 11 )
 stretch_mode = 2
@@ -238,23 +262,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="pond"]
+position = Vector2( 0, 0.319946 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pond/StaticBody2D2"]
+position = Vector2( 216.021, 246.858 )
+shape = SubResource( 7 )
+
 [node name="scenery" type="Node2D" parent="."]
 
 [node name="TextureRect3" type="TextureRect" parent="scenery"]
-margin_left = 926.955
-margin_top = 1036.33
-margin_right = 1054.95
-margin_bottom = 1164.33
+margin_left = 916.552
+margin_top = 1025.04
+margin_right = 1044.55
+margin_bottom = 1153.04
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect2" type="TextureRect" parent="scenery"]
-margin_left = 201.4
-margin_top = 2246.68
-margin_right = 329.4
-margin_bottom = 2374.68
+margin_left = 75.6039
+margin_top = 2234.68
+margin_right = 203.604
+margin_bottom = 2362.68
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect12" type="TextureRect" parent="scenery"]
+margin_left = -77.3038
+margin_top = 1914.68
+margin_right = 50.6962
+margin_bottom = 2042.68
 texture = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -281,10 +322,10 @@ __meta__ = {
 }
 
 [node name="TextureRect6" type="TextureRect" parent="scenery"]
-margin_left = 659.0
-margin_top = 1339.16
-margin_right = 787.0
-margin_bottom = 1467.16
+margin_left = 747.021
+margin_top = 1392.02
+margin_right = 875.021
+margin_bottom = 1520.02
 texture = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -347,11 +388,18 @@ __meta__ = {
 [node name="Bed" type="Node2D" parent="."]
 position = Vector2( 0, 168 )
 
+[node name="Area" type="Area2D" parent="Bed"]
+position = Vector2( 659, 1683 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area"]
+position = Vector2( -491.453, -182.662 )
+shape = SubResource( 8 )
+
 [node name="TextureRect13" type="TextureRect" parent="Bed"]
-margin_left = -7.62939e-06
-margin_top = 1559.31
-margin_right = 128.0
-margin_bottom = 1703.31
+margin_left = 16.0004
+margin_top = 1299.16
+margin_right = 144.0
+margin_bottom = 1443.16
 rect_scale = Vector2( 2.28223, 1.92891 )
 texture = ExtResource( 24 )
 stretch_mode = 1
@@ -360,10 +408,10 @@ __meta__ = {
 }
 
 [node name="TextureRect14" type="TextureRect" parent="Bed"]
-margin_left = 308.125
-margin_top = 1930.3
-margin_right = 436.125
-margin_bottom = 2074.3
+margin_left = 324.125
+margin_top = 1670.15
+margin_right = 452.125
+margin_bottom = 1814.15
 rect_rotation = 180.0
 rect_scale = Vector2( 2.28223, 1.92891 )
 texture = ExtResource( 24 )
@@ -373,10 +421,10 @@ __meta__ = {
 }
 
 [node name="TextureRect15" type="TextureRect" parent="Bed"]
-margin_left = 276.125
-margin_top = 1978.3
-margin_right = 404.125
-margin_bottom = 2122.3
+margin_left = 292.125
+margin_top = 1718.15
+margin_right = 420.125
+margin_bottom = 1862.15
 rect_rotation = 180.0
 rect_scale = Vector2( 2.28223, 1.92891 )
 texture = ExtResource( 24 )
@@ -386,10 +434,10 @@ __meta__ = {
 }
 
 [node name="TextureRect12" type="TextureRect" parent="Bed"]
-margin_left = 76.0
-margin_top = 1659.0
-margin_right = 226.0
-margin_bottom = 1875.0
+margin_left = 92.0004
+margin_top = 1398.85
+margin_right = 242.0
+margin_bottom = 1614.85
 texture = ExtResource( 25 )
 stretch_mode = 3
 __meta__ = {
@@ -399,5 +447,52 @@ __meta__ = {
 [node name="Foods" type="Node2D" parent="."]
 
 [node name="Cera" parent="." instance=ExtResource( 2 )]
-position = Vector2( -192.483, 956.253 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 418.769, 952.908 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Bars" type="Node2D" parent="."]
+
+[node name="Food" type="ProgressBar" parent="Bars"]
+margin_left = 690.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 445.378, 95.0491 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 0.1
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Drink" type="ProgressBar" parent="Bars"]
+margin_left = 690.0
+margin_top = 84.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_pivot_offset = Vector2( 940.129, 58.0139 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+step = 0.1
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sleep" type="ProgressBar" parent="Bars"]
+margin_left = 690.0
+margin_top = 148.0
+margin_right = 1060.0
+margin_bottom = 188.0
+rect_pivot_offset = Vector2( 940.129, 58.0139 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+step = 0.1
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

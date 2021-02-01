@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Cera/body.png" type="Texture" id=1]
 [ext_resource path="res://assets/Cera/back hind leg.png" type="Texture" id=2]
@@ -8,9 +8,13 @@
 [ext_resource path="res://assets/Cera/face.png" type="Texture" id=6]
 [ext_resource path="res://assets/Cera/back hind leg_bak.png" type="Texture" id=7]
 [ext_resource path="res://Cera.gd" type="Script" id=8]
+[ext_resource path="res://assets/Cera/Happy Mouth.png" type="Texture" id=9]
+[ext_resource path="res://assets/Cera/sad mouth.png" type="Texture" id=10]
 
-[sub_resource type="Animation" id=1]
-resource_name = "run"
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 222.223, 185.681 )
+
+[sub_resource type="Animation" id=2]
 length = 0.8
 loop = true
 step = 0.05
@@ -255,8 +259,7 @@ tracks/19/keys = {
 "values": [ -61.0249 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "stand"
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -500,8 +503,12 @@ tracks/19/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="KinematicBody2D"]
 script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 106.675 )
+shape = SubResource( 1 )
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 position = Vector2( -200, 0 )
@@ -635,15 +642,29 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Polygon2D8" type="Polygon2D" parent="Node2D"]
-position = Vector2( -143.469, -81.1732 )
+[node name="Happy Mouth" type="Polygon2D" parent="Node2D"]
+position = Vector2( -64.804, -375.824 )
+texture = ExtResource( 9 )
 skeleton = NodePath("../../Skeleton2D")
-bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Head"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Front Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Front/Back Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Front Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Back Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hind/Bone2D"), PoolRealArray( 0, 0, 0, 0 ) ]
-internal_vertex_count = 1
+polygon = PoolVector2Array( 461.111, 370.37, 611.111, 461.111, 464.815, 464.815 )
+uv = PoolVector2Array( 461.111, 370.37, 611.111, 461.111, 464.815, 464.815 )
+bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Front Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Back Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Tail"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Front Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Back Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Head"), PoolRealArray( 1, 1, 1 ) ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sad Mouth" type="Polygon2D" parent="Node2D"]
+visible = false
+position = Vector2( -63.1354, -377.493 )
+texture = ExtResource( 10 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 461.111, 370.37, 611.111, 461.111, 464.815, 464.815 )
+uv = PoolVector2Array( 461.111, 370.37, 611.111, 461.111, 464.815, 464.815 )
+bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Front Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Back Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hind/Tail"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Front Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Back Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Front/Head"), PoolRealArray( 1, 1, 1 ) ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/run = SubResource( 1 )
-anims/stand = SubResource( 2 )
+anims/run = SubResource( 2 )
+anims/stand = SubResource( 3 )
