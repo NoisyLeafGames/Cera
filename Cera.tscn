@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Cera/body.png" type="Texture" id=1]
 [ext_resource path="res://assets/Cera/back hind leg.png" type="Texture" id=2]
@@ -10,9 +10,12 @@
 [ext_resource path="res://Cera.gd" type="Script" id=8]
 [ext_resource path="res://assets/Cera/Happy Mouth.png" type="Texture" id=9]
 [ext_resource path="res://assets/Cera/sad mouth.png" type="Texture" id=10]
+[ext_resource path="res://drink.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/popup_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/popup_2.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 222.223, 185.681 )
+extents = Vector2( 148.543, 185.681 )
 
 [sub_resource type="Animation" id=2]
 length = 0.8
@@ -507,7 +510,7 @@ tracks/19/keys = {
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 106.675 )
+position = Vector2( 65.3755, 106.675 )
 shape = SubResource( 1 )
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
@@ -668,3 +671,31 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/run = SubResource( 2 )
 anims/stand = SubResource( 3 )
+
+[node name="Prompt" type="TextureButton" parent="."]
+margin_left = -184.312
+margin_top = -427.691
+margin_right = 175.688
+margin_bottom = -51.6907
+texture_normal = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Prompt"]
+margin_left = 96.312
+margin_top = -0.30899
+margin_right = 456.312
+margin_bottom = 375.691
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" parent="Prompt" instance=ExtResource( 11 )]
+margin_left = 141.944
+margin_top = 110.705
+margin_right = 226.224
+margin_bottom = 220.705
+rect_scale = Vector2( 1.8, 1.8 )
+[connection signal="pressed" from="Prompt" to="." method="Prompt_clicked"]

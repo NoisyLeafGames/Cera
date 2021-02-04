@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/RPG Tiles Vector/PNG/rpgTile024.png" type="Texture" id=1]
 [ext_resource path="res://Cera.tscn" type="PackedScene" id=2]
@@ -25,30 +25,37 @@
 [ext_resource path="res://assets/forestisometricblocktileset_windows/256x128/PNG/Object_41.png" type="Texture" id=23]
 [ext_resource path="res://assets/forestisometricblocktileset_windows/256x128/PNG/Object_13.png" type="Texture" id=24]
 [ext_resource path="res://assets/bed.png" type="Texture" id=25]
+[ext_resource path="res://font.tres" type="DynamicFont" id=26]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 215.431, 243.034 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 244.914, 283.356 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 35.6863, 34.8975 )
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0.607843, 0.00784314, 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0.341176, 0.00392157, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0.65098, 0.65098, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0.411765, 0.411765, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.517647, 0, 0.905882, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.345098, 0, 0.501961, 1 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 113.011, 127.917 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -68,7 +75,7 @@ position = Vector2( 0, -1748 )
 [node name="grass" type="TextureRect" parent="grass"]
 margin_top = 1748.0
 margin_right = 1085.0
-margin_bottom = 2821.0
+margin_bottom = 2835.0
 texture = ExtResource( 19 )
 stretch_mode = 2
 __meta__ = {
@@ -76,9 +83,9 @@ __meta__ = {
 }
 
 [node name="TextureRect4" type="TextureRect" parent="grass"]
-margin_top = 2821.0
+margin_top = 2835.02
 margin_right = 1085.0
-margin_bottom = 2885.0
+margin_bottom = 2899.02
 texture = ExtResource( 14 )
 stretch_mode = 2
 __meta__ = {
@@ -267,15 +274,24 @@ position = Vector2( 0, 0.319946 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pond/StaticBody2D2"]
 position = Vector2( 216.021, 246.858 )
-shape = SubResource( 7 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="pond"]
+visible = false
+position = Vector2( -64, -64 )
+space_override = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pond/Area2D"]
+position = Vector2( 242.633, 280.023 )
+shape = SubResource( 2 )
 
 [node name="scenery" type="Node2D" parent="."]
 
 [node name="TextureRect3" type="TextureRect" parent="scenery"]
 margin_left = 916.552
-margin_top = 1025.04
+margin_top = 1050.73
 margin_right = 1044.55
-margin_bottom = 1153.04
+margin_bottom = 1178.73
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -388,12 +404,13 @@ __meta__ = {
 [node name="Bed" type="Node2D" parent="."]
 position = Vector2( 0, 168 )
 
-[node name="Area" type="Area2D" parent="Bed"]
-position = Vector2( 659, 1683 )
+[node name="Area2D" type="Area2D" parent="Bed"]
+visible = false
+position = Vector2( 813.795, 1683 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area"]
-position = Vector2( -491.453, -182.662 )
-shape = SubResource( 8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area2D"]
+position = Vector2( -648.442, -167.066 )
+shape = SubResource( 3 )
 
 [node name="TextureRect13" type="TextureRect" parent="Bed"]
 margin_left = 16.0004
@@ -447,7 +464,7 @@ __meta__ = {
 [node name="Foods" type="Node2D" parent="."]
 
 [node name="Cera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 418.769, 952.908 )
+position = Vector2( -1182.77, 1015.83 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="Bars" type="Node2D" parent="."]
@@ -458,11 +475,24 @@ margin_top = 20.0
 margin_right = 1060.0
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 445.378, 95.0491 )
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-step = 0.1
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+step = 0.05
 value = 100.0
 percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bars/Food"]
+margin_top = -8.0
+margin_right = 370.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Hunger"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -473,11 +503,24 @@ margin_top = 84.0
 margin_right = 1060.0
 margin_bottom = 124.0
 rect_pivot_offset = Vector2( 940.129, 58.0139 )
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
-step = 0.1
-value = 100.0
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+step = 0.05
+value = 90.0
 percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Bars/Drink"]
+margin_top = -8.0
+margin_right = 370.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Thirst"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -488,11 +531,35 @@ margin_top = 148.0
 margin_right = 1060.0
 margin_bottom = 188.0
 rect_pivot_offset = Vector2( 940.129, 58.0139 )
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
-step = 0.1
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
+step = 0.05
 value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label3" type="Label" parent="Bars/Sleep"]
+margin_top = -8.0
+margin_right = 370.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Fatigue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start Area" type="Area2D" parent="."]
+position = Vector2( -1163.16, 1024.21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Area"]
+shape = SubResource( 10 )
+[connection signal="body_entered" from="pond/Area2D" to="Cera" method="showDrink"]
+[connection signal="body_exited" from="pond/Area2D" to="Cera" method="hidePrompt"]
+[connection signal="body_entered" from="Bed/Area2D" to="Cera" method="showSleep"]
+[connection signal="body_exited" from="Bed/Area2D" to="Cera" method="hidePrompt"]
+[connection signal="body_exited" from="Start Area" to="Cera" method="hidePrompt"]

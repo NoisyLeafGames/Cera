@@ -30,7 +30,7 @@ func _process(delta):
 			get_node("Bars/Food").value -= 0.1
 		if lastDrunk + 5000 < currentTick:
 			get_node("Bars/Drink").value -= 0.1
-		if lastSlept + 5000 < currentTick:
+		if get_node("Cera").isMoving:
 			get_node("Bars/Sleep").value -= 0.1
 
 	if lastFoodSpawned + foodRefeshTime < currentTick:
