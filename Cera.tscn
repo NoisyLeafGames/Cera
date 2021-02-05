@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Cera/back hind leg_bak.png" type="Texture" id=7]
 [ext_resource path="res://Cera.gd" type="Script" id=8]
 [ext_resource path="res://assets/Cera/Happy Mouth.png" type="Texture" id=9]
-[ext_resource path="res://assets/Cera/sad mouth.png" type="Texture" id=10]
+[ext_resource path="res://assets/Cera/shocked mouth.png" type="Texture" id=10]
 [ext_resource path="res://drink.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/popup_1.png" type="Texture" id=12]
 [ext_resource path="res://assets/popup_2.png" type="Texture" id=14]
@@ -673,20 +673,22 @@ anims/run = SubResource( 2 )
 anims/stand = SubResource( 3 )
 
 [node name="Prompt" type="TextureButton" parent="."]
-margin_left = -184.312
-margin_top = -427.691
-margin_right = 175.688
-margin_bottom = -51.6907
+margin_left = -232.312
+margin_top = -155.691
+margin_right = 127.688
+margin_bottom = 220.309
 texture_normal = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Prompt"]
-margin_left = 96.312
-margin_top = -0.30899
-margin_right = 456.312
-margin_bottom = 375.691
+margin_left = 116.344
+margin_top = -9.547
+margin_right = 476.344
+margin_bottom = 366.453
+rect_rotation = 90.0
+rect_scale = Vector2( 1, -1 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

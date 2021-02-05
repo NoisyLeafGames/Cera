@@ -30,9 +30,9 @@ func _process(delta):
 		lastTick = currentTick
 		
 		if lastEaten + 2000 < currentTick:
-			changeFoodLevel(-0.2)
+			changeFoodLevel(-0.1)
 		if lastDrunk + 2000 < currentTick:
-			changeDrinkLevel(-0.2)
+			changeDrinkLevel(-0.1)
 		if get_node("Cera").isMoving:
 			changeSleepLevel(-0.2)
 		if isSleeping():
@@ -50,6 +50,21 @@ func _process(delta):
 
 func isSleeping():
 	return lastSlept + sleepTime >= OS.get_ticks_msec()
+
+func getSleepLevel():
+	return get_node("Bars/Sleep").value
+
+func getFoodLevel():
+	return get_node("Bars/Food").value
+
+func getDrinkLevel():
+	return get_node("Bars/Drink").value
+
+func getHealthy():
+	return get_node("Bars/Sleep").value > 0 && get_node("Bars/Food").value > 0 && get_node("Bars/Drink").value > 0
+
+func getVeryHealthy():
+	return get_node("Bars/Sleep").value > 60 && get_node("Bars/Food").value > 60 && get_node("Bars/Drink").value > 60
 
 func changeFoodLevel(amount):
 	get_node("Bars/Food").value += amount
