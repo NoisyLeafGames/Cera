@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/RPG Tiles Vector/PNG/rpgTile024.png" type="Texture" id=1]
 [ext_resource path="res://Cera.tscn" type="PackedScene" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://assets/pixel.png" type="Texture" id=27]
 [ext_resource path="res://assets/final-banner-1.png" type="Texture" id=28]
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=29]
+[ext_resource path="res://Confetti.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/audio/4-Dark Fantasy Studio- Hide and seek.wav" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 215.431, 243.034 )
@@ -39,31 +41,33 @@ extents = Vector2( 244.914, 283.356 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 65.8052, 86.4336 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 71.9255, 111.174 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=5]
+size = 19
+extra_spacing_top = -10
 font_data = ExtResource( 29 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0.607843, 0.00784314, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0.341176, 0.00392157, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0, 0.65098, 0.65098, 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0.411765, 0.411765, 1 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.517647, 0, 0.905882, 1 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.345098, 0, 0.501961, 1 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 113.011, 127.917 )
 
 [node name="Node2D" type="Node2D"]
@@ -483,23 +487,64 @@ __meta__ = {
 position = Vector2( 200, 544 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="picture/Area2D"]
-shape = SubResource( 11 )
+shape = SubResource( 4 )
 
 [node name="Label" type="Label" parent="picture"]
 visible = false
-margin_left = 66.2204
-margin_top = 16.4872
-margin_right = 204.22
-margin_bottom = 59.4872
+margin_left = 34.0
+margin_top = 21.0
+margin_right = 201.0
+margin_bottom = 75.0
 rect_scale = Vector2( 2.00019, 2.13982 )
-custom_fonts/font = SubResource( 12 )
-text = "Happy Valentines 
-Katie <3 The Gang"
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.333333, 0, 0, 1 )
+text = "Happy Valentines
+<3 The Gang"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confetti" parent="picture" instance=ExtResource( 30 )]
+show_behind_parent = true
+position = Vector2( 200, 544 )
+scale = Vector2( 0.5, 0.5 )
+amount = 300
+lifetime = 200.0
+gravity = Vector2( -4, 0 )
+initial_velocity = 250.0
+scale_amount = 1.5
+
+[node name="confetti2" parent="picture" instance=ExtResource( 30 )]
+show_behind_parent = true
+position = Vector2( 200, 544 )
+scale = Vector2( 0.5, 0.5 )
+amount = 100
+lifetime = 200.0
+gravity = Vector2( -4, 0 )
+initial_velocity = 250.0
+scale_amount = 3.0
+color = Color( 0.858824, 0.560784, 0.87451, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.1
+
+[node name="confetti3" parent="picture" instance=ExtResource( 30 )]
+show_behind_parent = true
+position = Vector2( 200, 16.0001 )
+scale = Vector2( 0.5, 0.5 )
+amount = 20
+explosiveness = 0.01
+lifetime_randomness = 0.2
+gravity = Vector2( 2, 0 )
+initial_velocity = 100.0
+scale_amount = 0.5
+color = Color( 0.858824, 0.560784, 0.87451, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.1
 
 [node name="Cera" parent="." instance=ExtResource( 2 )]
-position = Vector2( -474.055, 1138.58 )
+position = Vector2( -228.445, 1146.96 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="Bars" type="Node2D" parent="."]
@@ -511,8 +556,8 @@ margin_right = 348.0
 margin_bottom = 100.0
 rect_scale = Vector2( 1, 1.00543 )
 rect_pivot_offset = Vector2( 445.378, 95.0491 )
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
 step = 0.05
 value = 100.0
 percent_visible = false
@@ -551,8 +596,8 @@ margin_top = 60.0
 margin_right = 705.782
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 940.129, 58.0139 )
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
 step = 0.05
 value = 100.0
 percent_visible = false
@@ -592,8 +637,8 @@ margin_top = 60.0
 margin_right = 1061.71
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 940.129, 58.0139 )
-custom_styles/fg = SubResource( 8 )
-custom_styles/bg = SubResource( 9 )
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
 step = 0.05
 value = 100.0
 percent_visible = false
@@ -627,10 +672,14 @@ __meta__ = {
 }
 
 [node name="Start Area" type="Area2D" parent="."]
-position = Vector2( -454.446, 1146.96 )
+position = Vector2( -208.836, 1155.34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start Area"]
-shape = SubResource( 10 )
+shape = SubResource( 12 )
+
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 31 )
+autoplay = true
 [connection signal="body_entered" from="pond/Area2D" to="Cera" method="showDrink"]
 [connection signal="body_exited" from="pond/Area2D" to="Cera" method="hidePrompt"]
 [connection signal="body_entered" from="Bed/Area2D" to="Cera" method="showSleep"]

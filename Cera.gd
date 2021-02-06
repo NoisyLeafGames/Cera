@@ -6,11 +6,17 @@ var drinkIcon = preload("res://assets/genericItem_color_118.png")
 var sawIcon = preload("res://assets/saw.png")
 var hammerIcon = preload("res://assets/hammer.png")
 var paintIcon = preload("res://assets/paintbrush.png")
+var heartIcon = preload("res://assets/heart2.png")
 
 var target = Vector2(500,1100)
 var speed = 5
 var isMoving = false
 var lastEnteredFoodInstance = null
+
+var lastPlayTick = OS.get_ticks_msec() - 10000
+var restartConfettiTick = OS.get_ticks_msec()
+
+var stoppedRunningTick = null
 
 var buildProgress = 1
 
@@ -51,14 +57,54 @@ func _process(delta):
 				scale = Vector2(0.3, 0.3)
 		else:
 			setRunning(false)
+	else:
+		stoppedRunningTick = null
+		
+		if !canSleep():
+			hidePrompt(null)
+	
+	if buildProgress == 12 && restartConfettiTick + 4000 < OS.get_ticks_msec():
+		restartConfettiTick = OS.get_ticks_msec()
+		get_parent().get_node("picture").get_node("confetti3").restart()
 
 func setRunning(running):
 	isMoving = running
 	
-	if running:
-		get_node("AnimationPlayer").play("run")
-	else:
-		get_node("AnimationPlayer").play("stand")
+	if get_node("AnimationPlayer").current_animation != "eat":
+		if running:
+			get_node("AnimationPlayer").play("run")
+			stoppedRunningTick = null
+			if !get_node("footsteps").playing:
+				get_node("footsteps").play()
+			return
+		else:
+			if get_node("AnimationPlayer").current_animation != "play":
+				if stoppedRunningTick == null:
+					stoppedRunningTick = OS.get_ticks_msec()
+				
+				if stoppedRunningTick + 3000 < OS.get_ticks_msec():
+					stoppedRunningTick = null
+					showPlay()
+				
+				get_node("AnimationPlayer").play("stand")
+		
+	get_node("footsteps").stop()
+
+func canPlay():
+	return lastPlayTick + 10000 < OS.get_ticks_msec() && get_node("Prompt").visible == false
+
+func showPlay():
+	if canPlay():
+		get_node("Prompt").show()
+		get_node("Prompt/icon").texture = heartIcon
+
+func play():
+	lastPlayTick = OS.get_ticks_msec()
+	get_node("AnimationPlayer").play("play")
+	get_node("AnimationPlayer").queue("stand")
+	get_node("hearts").restart()
+	get_node("hearts").emitting = true
+	hidePrompt(null)
 
 func canDrink():
 	return get_parent().getSleepLevel() > 10 && get_parent().getDrinkLevel() < 95
@@ -69,9 +115,12 @@ func showDrink(body):
 		get_node("Prompt/icon").texture = drinkIcon
 
 func drink():
+	get_node("AnimationPlayer").play("eat")
+	get_node("AnimationPlayer").queue("stand")
 	get_parent().changeDrinkLevel(30)
 	get_parent().changeSleepLevel(-10)
 	get_parent().lastDrunk = OS.get_ticks_msec()
+	get_node("drink").play(0)
 	
 	if !canDrink():
 		hidePrompt(null)
@@ -87,6 +136,8 @@ func showEat(foodInstance):
 		lastEnteredFoodInstance = foodInstance
 
 func eat():
+	get_node("AnimationPlayer").play("eat")
+	get_node("AnimationPlayer").queue("stand")
 	get_parent().changeFoodLevel(10)
 	get_parent().changeSleepLevel(-10)
 	get_parent().lastEaten = OS.get_ticks_msec()
@@ -94,16 +145,24 @@ func eat():
 	lastEnteredFoodInstance.hide()
 	lastEnteredFoodInstance.queue_free()
 	hidePrompt(null)
+	get_node("eat").play(0)
 	
 	if !canEat():
 		hidePrompt(null)
 
+func canSleep():
+	return get_parent().getSleepLevel() < 95
+
 func showSleep(body):
-	get_node("Prompt").show()
-	get_node("Prompt/icon").texture = sleepIcon
+	if canSleep():
+		get_node("Prompt").show()
+		get_node("Prompt/icon").texture = sleepIcon
 
 func sleep():
-	get_parent().lastSlept = OS.get_ticks_msec()
+	if canSleep():
+		get_node("sleep").play(0)
+		get_parent().lastSlept = OS.get_ticks_msec()
+		get_node("AnimationPlayer").play("sleep")
 
 func canBuild():
 	return get_parent().getVeryHealthy() && buildProgress < 12
@@ -127,6 +186,15 @@ func build():
 	
 	get_parent().get_node("picture").texture = load("res://assets/final-banner-" + str(buildProgress) + ".png")
 	
+	if buildProgress == 12:
+		get_node("celebrate").play(0)
+		get_parent().get_node("picture").get_node("Label").visible = true
+		get_parent().get_node("picture").get_node("confetti").emitting = true
+		get_parent().get_node("picture").get_node("confetti2").emitting = true
+		get_parent().get_node("picture").get_node("confetti3").emitting = true
+	else:
+		get_node("build").play(0)
+	
 	if !canBuild():
 		hidePrompt(null)
 
@@ -140,5 +208,7 @@ func Prompt_clicked():
 		eat()
 	elif get_node("Prompt/icon").texture == sleepIcon:
 		sleep()
+	elif get_node("Prompt/icon").texture == heartIcon:
+		play()
 	else:
 		build()

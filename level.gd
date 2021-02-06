@@ -64,7 +64,7 @@ func getHealthy():
 	return get_node("Bars/Sleep").value > 0 && get_node("Bars/Food").value > 0 && get_node("Bars/Drink").value > 0
 
 func getVeryHealthy():
-	return get_node("Bars/Sleep").value > 60 && get_node("Bars/Food").value > 60 && get_node("Bars/Drink").value > 60
+	return get_node("Bars/Sleep").value > 50 && get_node("Bars/Food").value > 50 && get_node("Bars/Drink").value > 50
 
 func changeFoodLevel(amount):
 	get_node("Bars/Food").value += amount
