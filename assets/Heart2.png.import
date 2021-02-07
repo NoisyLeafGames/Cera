@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heart2.png-d1de4451678d7d8044c9c1fb7bb72022.stex"
+path="res://.import/heart2.png-55693451c1ffbae400adee3f97496ab2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Heart2.png"
-dest_files=[ "res://.import/Heart2.png-d1de4451678d7d8044c9c1fb7bb72022.stex" ]
+source_file="res://assets/heart2.png"
+dest_files=[ "res://.import/heart2.png-55693451c1ffbae400adee3f97496ab2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

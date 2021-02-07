@@ -9,7 +9,7 @@ var paintIcon = preload("res://assets/paintbrush.png")
 var heartIcon = preload("res://assets/heart2.png")
 
 var target = Vector2(500,1100)
-var speed = 5
+var speed = 10
 var isMoving = false
 var lastEnteredFoodInstance = null
 
@@ -138,7 +138,7 @@ func showEat(foodInstance):
 func eat():
 	get_node("AnimationPlayer").play("eat")
 	get_node("AnimationPlayer").queue("stand")
-	get_parent().changeFoodLevel(10)
+	get_parent().changeFoodLevel(20)
 	get_parent().changeSleepLevel(-10)
 	get_parent().lastEaten = OS.get_ticks_msec()
 	

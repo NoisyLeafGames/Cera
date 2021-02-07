@@ -1476,6 +1476,7 @@ stream = ExtResource( 18 )
 [node name="sleep" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2( 1, 0.996014 )
 stream = ExtResource( 19 )
+volume_db = 2.0
 
 [node name="celebrate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 20 )
